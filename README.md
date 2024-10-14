@@ -26,3 +26,16 @@ services:
       - /Music:/var/lib/mpd/music:ro
       - playlists:/var/lib/mpd/playlists
 ```
+
+#### Troubleshooting
+
+<details>
+<summary>"Permission denied" in logs</summary>
+<p>
+  
+Solution:
+```sh
+mkdir {Music,playlists,data} && chmod 777 {Music,playlists,data}
+```
+</p>
+</details>
