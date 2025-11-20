@@ -15,7 +15,7 @@ Music Player Daemon (MPD) is a free and open music player server. It plays audio
 ```yaml
 services:
   mpd:
-    image: mpd-0.19
+    image: ghcr.io/janisv/docker-mpd-0.19
     container_name: mpd
     restart: unless-stopped
     ports:
