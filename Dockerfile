@@ -125,3 +125,6 @@ COPY mpd.conf /etc/mpd.conf
 EXPOSE 6600 8000
 
 CMD ["/usr/bin/mpd", "--no-daemon", "--stdout", "/etc/mpd.conf"]
+
+HEALTHCHECK --interval=30s --timeout=10s --retries=3 --start-period=5s \
+  CMD mpc status || exit 1
