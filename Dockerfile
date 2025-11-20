@@ -52,9 +52,7 @@ RUN apk update \
 
 RUN echo \
 # MPD \
-  && gpg -v --keyserver hkps://pgp.mit.edu --receive-keys 0392335A78083894A4301C43236E8A58C6DB4512 \
-  && bash -c "wget -nv https://www.musicpd.org/download/mpd/${MPD_VERSION%.*}/mpd-${MPD_VERSION}.tar.xz{,.sig}" \
-  && gpg --verify mpd-${MPD_VERSION}.tar.xz.sig mpd-${MPD_VERSION}.tar.xz \
+  && wget -nv https://www.musicpd.org/download/mpd/${MPD_VERSION%.*}/mpd-${MPD_VERSION}.tar.xz \
   && tar xJvf /mpd-${MPD_VERSION}.tar.xz -C / \
   && export DESTDIR=/build \
   && cd mpd-${MPD_VERSION} \
@@ -78,7 +76,7 @@ RUN adduser -D -g '' mpd
 
 RUN apk -q update \
     && apk -q --no-progress add \
-        bats \
+      bats \
       libmpdclient \
       flac \
       yajl \
